@@ -1,54 +1,105 @@
 # Coder Crew
 
-Welcome to the Coder Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+A powerful AI-powered coding assistant built with [crewAI](https://crewai.com) that can write, execute, and debug Python code automatically. This project demonstrates how AI agents can collaborate to solve complex programming tasks with minimal human intervention.
 
-## Installation
+## 🚀 Features
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+- **Automated Code Generation**: AI agents write Python code based on natural language descriptions
+- **Code Execution & Testing**: Built-in execution and output validation
+- **Intelligent Planning**: Agents plan their approach before writing code
+- **Output Documentation**: Automatically generates comprehensive output files with code and results
+- **Extensible Architecture**: Easy to customize agents, tasks, and tools
 
-First, if you haven't already, install uv:
+## 📋 Prerequisites
+
+- Python >= 3.10, < 3.14
+- [UV](https://docs.astral.sh/uv/) package manager
+- OpenAI API key
+
+## 🛠️ Installation
+
+1. **Install UV** (if not already installed):
+   ```bash
+   pip install uv
+   ```
+
+2. **Clone and navigate to the project**:
+   ```bash
+   cd coder
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   crewai install
+   ```
+
+4. **Set up environment variables**:
+   Create a `.env` file in the project root and add your OpenAI API key:
+   ```bash
+   OPENAI_API_KEY=your_api_key_here
+   ```
+
+## 🎯 Quick Start
+
+Run the coder crew with a simple command:
 
 ```bash
-pip install uv
+crewai run
 ```
 
-Next, navigate to your project directory and install the dependencies:
+This will execute the default task: calculating the first 10,000 terms of the series `1 - 1/3 + 1/5 - 1/7 + ...` multiplied by 4.
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
+## 📁 Project Structure
+
 ```
-### Customizing
-
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/coder/config/agents.yaml` to define your agents
-- Modify `src/coder/config/tasks.yaml` to define your tasks
-- Modify `src/coder/crew.py` to add your own logic, tools and specific args
-- Modify `src/coder/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
+coder/
+├── src/coder/
+│   ├── config/
+│   │   ├── agents.yaml      # Agent definitions and configurations
+│   │   └── tasks.yaml       # Task definitions and workflows
+│   ├── tools/
+│   │   └── custom_tool.py   # Custom tools for agents
+│   ├── crew.py              # Main crew orchestration logic
+│   └── main.py              # Entry point and execution
+├── output/                  # Generated output files
+├── knowledge/               # Knowledge base and context
+└── tests/                   # Test files
 ```
 
-This command initializes the coder Crew, assembling the agents and assigning them tasks as defined in your configuration.
+## ⚙️ Configuration
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+### Agents (`src/coder/config/agents.yaml`)
 
-## Understanding Your Crew
+The project uses a **Python Developer** agent with the following capabilities:
+- **Role**: Python Developer
+- **Goal**: Write clean, efficient Python code to solve assignments
+- **Process**: Plan → Code → Execute → Validate
+- **Model**: OpenAI GPT-4o
 
-The coder Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+### Tasks (`src/coder/config/tasks.yaml`)
 
-## Support
+Tasks define what the agents will accomplish:
+- **Description**: Natural language description of the coding task
+- **Expected Output**: Specification of what should be produced
+- **Output File**: Where results are saved (`output/code_and_output.txt`)
 
-For support, questions, or feedback regarding the Coder Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+## 🔧 Customization
 
-Let's create wonders together with the power and simplicity of crewAI.
+### Modifying the Assignment
+
+Edit `src/coder/main.py` to change the coding assignment:
+
+```python
+assignment = 'Your custom coding task description here'
+```
+
+## 📊 Example Output
+
+The coder crew generates comprehensive output files containing:
+- Complete Python code
+- Execution results
+- Performance metrics
+- Error handling and debugging information
+
+Example output location: `output/code_and_output.txt`
+
