@@ -1,0 +1,18 @@
+# Python Code:
+```python
+def calculate_series_terms(n_terms):
+    total_sum = 0.0
+    for i in range(n_terms):
+        term = (-1) ** i / (2 * i + 1)
+        total_sum += term
+    return total_sum
+
+n_terms = 10000
+series_sum = calculate_series_terms(n_terms)
+result = 4 * series_sum
+
+print('Result after multiplying by 4:', result)
+```
+
+# Output:
+Result after multiplying by 4: 3.1414926535900345
